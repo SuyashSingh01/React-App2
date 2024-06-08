@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import Child1 from './components/Child1';
+import Child2 from './components/Child2';
+import Color from './components/Color';
 
-function App() {
+const Parent = () => {
+  const [money, setMoney] = useState(0);
+
+  const incrementMoney = () => setMoney(money + 1000);
+  const decrementMoney = () => setMoney(money - 500);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div>
+      <h1>Q-1. Money</h1>
+      <h2>{money}</h2>
+      <Child1 incrementMoney={incrementMoney}/>
+      <Child2 decrementMoney={decrementMoney} />
     </div>
+    <div>
+      <h1>Q-2. ColorPlatte </h1>
+      <Color/>
+    </div>
+    </>
   );
-}
+};
 
-export default App;
+export default Parent;
+
